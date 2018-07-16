@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <setting name="logImpl" value="LOG4J" />
+        <!--开启驼峰命名映射-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="jdbcTypeForNull" value="NULL"/>
+        <!--显式的配置开启二级缓存-->
+        <setting name="cacheEnabled" value="true"/>
+            <!-- 打开延迟加载的开关 -->
+            <setting name="lazyLoadingEnabled" value="true" />
+            <!-- 将积极加载改为消息加载即按需加载 -->
+            <setting name="aggressiveLazyLoading" value="false" />
+        <!--lazyLoadTriggerMethods：指定哪个对象的方法触发一次延迟加载。默认值：equals,clone,hashCode,toString
+        所以，当我打印对象时，由于触发了 toString 方法，所以触发了一次懒加载-->
+            <setting name="lazyLoadTriggerMethods" value=""/>
+    </settings>
+
+    <!--支持多数据库厂商的标签
+     this.typeAliasRegistry.registerAlias("DB_VENDOR", VendorDatabaseIdProvider.class);
+     作用就是得到数据库厂商的标识，mybatis就能根据数据库厂商的标识来执行不同的sql；
+     getDatabaseProductName（）；
+     -->
+    <databaseIdProvider type="DB_VENDOR">
+        <!--服务名字不能写错，写错就gg-->
+        <property name="MySQL" value="mysql"></property>
+        <property name="Oracle" value="oracle"></property>
+    </databaseIdProvider>
+
+
+</configuration>

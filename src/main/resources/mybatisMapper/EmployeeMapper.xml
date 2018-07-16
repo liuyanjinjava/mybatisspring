@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+namespce:名称空间
+id:是唯一标识符；
+resultType:是返回值；
+#{id}从传递过来的参数中取出ID值；
+sql映射文件，配置了每一个sql，以及sql的封装规则等；
+3.将sql映射文件注册在全局配置文件中；
+
+-->
+
+<mapper namespace="com.lyj.dao.EmployeeMapper">
+    <!--public Employee getEmpById(Integer id);-->
+    <select id="getEmpById" resultType="com.lyj.bean.Employee">
+        select * from tbl_employee where id=#{id}
+    </select>
+    <!--public List<Employee> getEmps();-->
+    <select id="getEmps" resultType="com.lyj.bean.Employee">
+        select * from tbl_employee
+    </select>
+</mapper>
